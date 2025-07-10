@@ -1,0 +1,42 @@
+import random as r
+class Produto:
+    _lista_produtos = []
+    _nome = str
+    _preco = float
+    _codigo = int
+
+    def __init__(self, nome: str, preco: float):
+        self._nome = nome
+        self._preco = preco
+        self._codigo = r.randint(1000001, 9999999)
+        while self._existe_produto(self._codigo):
+            self._codigo = r.randint(1000001,9999999)
+        self._set_produtos(self._codigo)
+
+    def _getcodigo(self):
+        return self._codigo
+
+    def _set_produtos(self, codigo: int):
+        Produto._lista_produtos.append(codigo)
+
+    def _existe_produto(self, codigo: int):
+        return codigo in Poduto._lista_produtos
+
+    def setpreco(self, preco: float):
+        self._preco = preco 
+
+    def __str__(self):
+        return f'Produto: {self._nome}, Preço: R${self._preco:.2f}, Código: {self._codigo}'
+
+    def extrato(self):
+        saida = "=====NOTA FISCAIL=====/n"
+        saida += f'Produto: {self._nome}\n'
+        saida += f'Preço: R${self._preco:.2f}\n'
+        saida += f'Código: {self._codigo}\n'
+        saida += "======================\n"
+        return saida
+        
+        print("--- Detalhes do Produto ---")
+print(f"Nome: {produto_exemplo._nome}")
+print(f"Preço: R$ {produto_exemplo._preco:.2f}")
+print(f"Código: {produto_exemplo._getcodigo()}")
